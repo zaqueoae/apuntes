@@ -11,4 +11,15 @@ $password_segura = password_hash($password), PASSWORD_BYCRYPT, ['cost'=>4]);
 //Si es la misma nos devuelve un true y si no coincide devuelve un false.
 password_verify($paswword, $password_segura);
 
+//Insertar usuario en la db
+$db = mysqli_connect($server, $username, $password, $database);
+$sql = "INSERT INTO usuarios VALUES (null, $nombre, $apellidos, $email, $password, CURDATE())";
+$query = mysqli_query($db, $sql);
+if ($query){
+echo "Los datos se han guardao en la db";
+}
+
+//Redirigir a otra página
+header('Location:index.php');
+
 ?>
